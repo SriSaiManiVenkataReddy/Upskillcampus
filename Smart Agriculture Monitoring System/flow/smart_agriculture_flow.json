@@ -1,0 +1,1258 @@
+[
+    {
+        "id": "22d8f43ee5283564",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cec5fe998d8fa3b0",
+        "type": "inject",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 20,
+        "wires": [
+            [
+                "6f8b6d494450695f"
+            ]
+        ]
+    },
+    {
+        "id": "6f8b6d494450695f",
+        "type": "function",
+        "z": "22d8f43ee5283564",
+        "name": "Temp",
+        "func": "msg.payload = Math.floor(Math.random() * 15) + 25;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 20,
+        "wires": [
+            [
+                "11d65140ab2c6394"
+            ]
+        ]
+    },
+    {
+        "id": "11d65140ab2c6394",
+        "type": "mqtt out",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "topic": "agriculture/temperature",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "10d59954ac70a56b",
+        "x": 630,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "c0c802fe285f6b78",
+        "type": "debug",
+        "z": "22d8f43ee5283564",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9f3fd34d22570473",
+        "type": "mqtt in",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "topic": "agriculture/temperature",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "10d59954ac70a56b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 660,
+        "y": 160,
+        "wires": [
+            [
+                "c0c802fe285f6b78",
+                "6c0a81f1f22183a5",
+                "85c9eb01345c4184",
+                "f88fa918f76d7ac3",
+                "d0ee3bc1b784c945"
+            ]
+        ]
+    },
+    {
+        "id": "6c0a81f1f22183a5",
+        "type": "ui-gauge",
+        "z": "22d8f43ee5283564",
+        "name": "Temperature Gauge",
+        "group": "a1ea3537228c6973",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Temperature",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "30",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "35",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "50",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1120,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6e6cc6e808d3a92c",
+        "type": "inject",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 400,
+        "wires": [
+            [
+                "a04699d2873c78f0"
+            ]
+        ]
+    },
+    {
+        "id": "a04699d2873c78f0",
+        "type": "function",
+        "z": "22d8f43ee5283564",
+        "name": "Humidity",
+        "func": "msg.payload = Math.floor(Math.random() * 40) + 40;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 400,
+        "wires": [
+            [
+                "07fe449f3b887f3e"
+            ]
+        ]
+    },
+    {
+        "id": "07fe449f3b887f3e",
+        "type": "mqtt out",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "topic": "agriculture/humidity",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "10d59954ac70a56b",
+        "x": 590,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "b6ed79d1d44cac9d",
+        "type": "debug",
+        "z": "22d8f43ee5283564",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "6b24a3efaf9db01e",
+        "type": "mqtt in",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "topic": "agriculture/humidity",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "10d59954ac70a56b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 590,
+        "y": 520,
+        "wires": [
+            [
+                "b6ed79d1d44cac9d",
+                "baf29e649838ac25",
+                "a113c5736a6d31b3"
+            ]
+        ]
+    },
+    {
+        "id": "baf29e649838ac25",
+        "type": "ui-gauge",
+        "z": "22d8f43ee5283564",
+        "name": "Humidity Gauge",
+        "group": "a1ea3537228c6973",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Humidity",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 920,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5a7339f38d01a38d",
+        "type": "inject",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 680,
+        "wires": [
+            [
+                "1d22dd903725f2af"
+            ]
+        ]
+    },
+    {
+        "id": "1d22dd903725f2af",
+        "type": "function",
+        "z": "22d8f43ee5283564",
+        "name": "Soil Moisture Gauge",
+        "func": "msg.payload = Math.floor(Math.random() * 100);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 680,
+        "wires": [
+            [
+                "ad19c4d4a1d5e9f5"
+            ]
+        ]
+    },
+    {
+        "id": "ad19c4d4a1d5e9f5",
+        "type": "mqtt out",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "topic": "agriculture/Soil Moisture",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "10d59954ac70a56b",
+        "x": 590,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "c490f60732d6909f",
+        "type": "debug",
+        "z": "22d8f43ee5283564",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "dd8241f90692f621",
+        "type": "mqtt in",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "topic": "agriculture/Soil Moisture",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "10d59954ac70a56b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 620,
+        "y": 820,
+        "wires": [
+            [
+                "c490f60732d6909f",
+                "628797faaaf7fdc9",
+                "19e81cf55a577fd1",
+                "5ec734c6179f10bb",
+                "4c40ef81affc4ca9"
+            ]
+        ]
+    },
+    {
+        "id": "628797faaaf7fdc9",
+        "type": "ui-gauge",
+        "z": "22d8f43ee5283564",
+        "name": "Soil Moisture Gauge",
+        "group": "a1ea3537228c6973",
+        "order": 3,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Soil Moisture",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "25",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1020,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "85c9eb01345c4184",
+        "type": "ui-chart",
+        "z": "22d8f43ee5283564",
+        "group": "470f50b8192d40f7",
+        "name": "Temperature trend",
+        "label": "Temperature trend",
+        "order": 1,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "Time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Temp",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "50",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 15,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 990,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a113c5736a6d31b3",
+        "type": "ui-chart",
+        "z": "22d8f43ee5283564",
+        "group": "470f50b8192d40f7",
+        "name": "Humidity Chart",
+        "label": "Humidity chart",
+        "order": 2,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 15,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 940,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "19e81cf55a577fd1",
+        "type": "ui-chart",
+        "z": "22d8f43ee5283564",
+        "group": "470f50b8192d40f7",
+        "name": "",
+        "label": "Soil Moisture Chart",
+        "order": 3,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 15,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 970,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f88fa918f76d7ac3",
+        "type": "function",
+        "z": "22d8f43ee5283564",
+        "name": "Temperature alert",
+        "func": "if(msg.payload > 37){\n    msg.payload = \"🔥 HIGH TEMPERATURE ALERT!\";\n} else {\n    msg.payload = \"✅ Temperature Normal\";\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 240,
+        "wires": [
+            [
+                "0e8b03b1b655b38a"
+            ]
+        ]
+    },
+    {
+        "id": "0e8b03b1b655b38a",
+        "type": "ui-text",
+        "z": "22d8f43ee5283564",
+        "group": "3db5f48bafdde44d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Temperature",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 1210,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5ec734c6179f10bb",
+        "type": "function",
+        "z": "22d8f43ee5283564",
+        "name": "Soil Moisture alert",
+        "func": "if(msg.payload < 30){\n    msg.payload = \"💧 SOIL DRY - WATER REQUIRED\";\n} else {\n    msg.payload = \"✅ Soil Moisture Normal\";\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 900,
+        "wires": [
+            [
+                "856358938afc0105"
+            ]
+        ]
+    },
+    {
+        "id": "856358938afc0105",
+        "type": "ui-text",
+        "z": "22d8f43ee5283564",
+        "group": "3db5f48bafdde44d",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Soil",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 1190,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "4c40ef81affc4ca9",
+        "type": "function",
+        "z": "22d8f43ee5283564",
+        "name": "Pump status",
+        "func": "if(msg.payload < 30){\n    msg.payload = \"🟢 Pump ON\";\n} else {\n    msg.payload = \"🔴 Pump OFF\";\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 1000,
+        "wires": [
+            [
+                "7ccebb16be799f11"
+            ]
+        ]
+    },
+    {
+        "id": "7ccebb16be799f11",
+        "type": "ui-text",
+        "z": "22d8f43ee5283564",
+        "group": "3db5f48bafdde44d",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "Irrigation Pump Status",
+        "label": "Irrigation Pump Status",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 1240,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "fe69b80caf9bc9ef",
+        "type": "inject",
+        "z": "22d8f43ee5283564",
+        "name": "Farm health",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 1040,
+        "wires": [
+            [
+                "7508387a80e9e75b"
+            ]
+        ]
+    },
+    {
+        "id": "7508387a80e9e75b",
+        "type": "function",
+        "z": "22d8f43ee5283564",
+        "name": "Farm Health",
+        "func": "msg.payload = Math.floor(Math.random()*20)+80;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1040,
+        "wires": [
+            [
+                "14ffcdae0288acbe"
+            ]
+        ]
+    },
+    {
+        "id": "14ffcdae0288acbe",
+        "type": "ui-gauge",
+        "z": "22d8f43ee5283564",
+        "name": "Farm Health Score",
+        "group": "a1ea3537228c6973",
+        "order": 4,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Farm Health Score",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "80",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "90",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 630,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0ee3bc1b784c945",
+        "type": "function",
+        "z": "22d8f43ee5283564",
+        "name": "Temp Condition",
+        "func": "if(msg.payload < 28){\n    msg.payload = \"☁️ Cool Weather\";\n}\nelse if(msg.payload < 35){\n    msg.payload = \"☀️ Normal Weather\";\n}\nelse{\n    msg.payload = \"🔥 Hot Weather\";\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 280,
+        "wires": [
+            [
+                "19fe91c59f88a1c1"
+            ]
+        ]
+    },
+    {
+        "id": "19fe91c59f88a1c1",
+        "type": "ui-text",
+        "z": "22d8f43ee5283564",
+        "group": "3db5f48bafdde44d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Weather Condition",
+        "label": "Weather Condition",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 1190,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "7181981e03f86492",
+        "type": "inject",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1180,
+        "wires": [
+            [
+                "832f47abec8ff6c3"
+            ]
+        ]
+    },
+    {
+        "id": "832f47abec8ff6c3",
+        "type": "function",
+        "z": "22d8f43ee5283564",
+        "name": "Water Tank Level",
+        "func": "msg.payload = Math.floor(Math.random()*100);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 1180,
+        "wires": [
+            [
+                "b47b00965526c3d4"
+            ]
+        ]
+    },
+    {
+        "id": "b47b00965526c3d4",
+        "type": "mqtt out",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "topic": "agriculture/watertank",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "10d59954ac70a56b",
+        "x": 640,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "cfc520687ddc6777",
+        "type": "mqtt in",
+        "z": "22d8f43ee5283564",
+        "name": "",
+        "topic": "agriculture/watertank",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "10d59954ac70a56b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 650,
+        "y": 1260,
+        "wires": [
+            [
+                "b92619d746e65983"
+            ]
+        ]
+    },
+    {
+        "id": "b92619d746e65983",
+        "type": "ui-gauge",
+        "z": "22d8f43ee5283564",
+        "name": "Water Tank level",
+        "group": "a1ea3537228c6973",
+        "order": 5,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Water Tank Level",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "40",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "75",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 920,
+        "y": 1260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "10d59954ac70a56b",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "a1ea3537228c6973",
+        "type": "ui-group",
+        "name": "Environmental Monitoring",
+        "page": "3500306e9d4dd901",
+        "width": 15,
+        "height": "1",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": true,
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "470f50b8192d40f7",
+        "type": "ui-group",
+        "name": "Charts",
+        "page": "3500306e9d4dd901",
+        "width": 15,
+        "height": 1,
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "3db5f48bafdde44d",
+        "type": "ui-group",
+        "name": "Text Alerts",
+        "page": "3500306e9d4dd901",
+        "width": 15,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "3500306e9d4dd901",
+        "type": "ui-page",
+        "name": "Smart Agriculture System",
+        "ui": "5042480124237cbb",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "flex",
+        "theme": "8eb31691ab9e5f88",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": true,
+        "disabled": false
+    },
+    {
+        "id": "5042480124237cbb",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "8eb31691ab9e5f88",
+        "type": "ui-theme",
+        "name": "Theme",
+        "colors": {
+            "surface": "#006eff",
+            "primary": "#0094ce",
+            "bgPage": "#000000",
+            "groupBg": "#ffffff",
+            "groupOutline": "#858585"
+        },
+        "sizes": {
+            "density": "comfortable",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "20aa60d4321e0c40",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.30.2"
+        }
+    }
+]
